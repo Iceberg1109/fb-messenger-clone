@@ -60,6 +60,7 @@ export default class SplashScreen extends Component {
                             });
                         }
                     }}
+                    onLogoutFinished={() => console.log('logout.')}
                 /> */}
             </SafeAreaView>
         );
