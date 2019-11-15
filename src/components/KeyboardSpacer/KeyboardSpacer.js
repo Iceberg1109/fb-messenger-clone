@@ -16,6 +16,22 @@ export default class KeyboardSpacer extends Component {
         this.imageHeight = new Animated.Value(0);
     }
 
+    componentDidMount() {
+        this.keyboardDidShowListener = Keyboard.addListener(
+            'keyboardWillShow',
+            this.keyboardWillShow
+        );
+        this.keyboardDidHideListener = Keyboard.addListener(
+            'keyboardWillHide',
+            this.keyboardWillHide
+        );
+    }
+
+    componentWillUnmount() {
+        this.keyboardDidShowListener.remove();
+        this.keyboardDidHideListener.remove();
+    }
+
     keyboardWillShow = e => {
         Animated.timing(this.imageHeight, {
             duration: 240,
